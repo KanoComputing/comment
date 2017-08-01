@@ -1,0 +1,21 @@
+{
+    "next_challenge": null,
+
+    "steps": [
+        {
+            "copy": "welcome",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        },
+        {
+            "copy": "type_this_then",
+            "arguments": [
+                "say_hello",
+                "press_enter"
+            ],
+            "validate": "say_hello",
+            "clear_screen": false
+        }
+    ]
+}

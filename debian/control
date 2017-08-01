@@ -1,0 +1,18 @@
+Source: comment
+Maintainer: Team Kano <dev@kano.me>
+Section: x11
+Priority: optional
+Standards-Version: 3.9.4
+Build-Depends:
+    debhelper (>=9.0.0),
+    python
+
+Package: comment
+Architecture: any
+Depends:
+    ${shlibs:Depends},
+    ${misc:Depends},
+    python,
+    espeak
+Description: Learn how to make your computer talk
+ Take control of your computer's voice with code using Text-To-Speech technology

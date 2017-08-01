@@ -1,0 +1,53 @@
+{
+    "next_challenge": null,
+
+    "steps": [
+        {
+            "copy": "knock_knock",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        },
+        {
+            "copy": "type_this_then",
+            "arguments": [
+                "say_who_is_there",
+                "press_enter"
+            ],
+            "validate": "say_who_is_there",
+            "clear_screen": false
+        },
+
+        {
+            "copy": "art",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        },
+        {
+            "copy": "type_this_then",
+            "arguments": [
+                "say_art_who",
+                "press_enter"
+            ],
+            "validate": "say_art_who",
+            "clear_screen": false
+        },
+
+        {
+            "copy": "r2_d2",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        },
+        {
+            "copy": "type_this_then",
+            "arguments": [
+                "say_makes_no_sense",
+                "press_enter"
+            ],
+            "validate": "say_makes_no_sense",
+            "clear_screen": true
+        }
+    ]
+}

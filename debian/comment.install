@@ -1,0 +1,7 @@
+bin/* usr/bin/
+
+comment usr/lib/python2.7/dist-packages/
+
+res usr/share/comment/
+res/icon/comment.app usr/share/applications/
+res/icon/comment-app.png usr/share/icons/Kano/66x66/apps/

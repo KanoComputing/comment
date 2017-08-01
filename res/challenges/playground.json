@@ -1,0 +1,16 @@
+{
+    "steps": [
+        {
+            "copy": "welcome_playground",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        },
+        {
+            "copy": "can_type_exit",
+            "arguments": [],
+            "validate": null,
+            "clear_screen": false
+        }
+    ]
+}
