@@ -1,0 +1,13 @@
+# qmldir
+#
+# Copyright (C) 2017 Kano Computing Ltd.
+# License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPL v2
+#
+# Application specific widgets module.
+
+
+module Controllers
+
+singleton ChallengeManager 1.0 ChallengeManager.qml
+Challange 1.0 Challenge.qml
+Step 1.0 Step.qml
