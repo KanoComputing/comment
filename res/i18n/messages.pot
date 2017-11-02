@@ -7,7 +7,77 @@ msgstr ""
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../res/ui/Views/SplashScreen.qml:30
+#: ../res/challenges/Count.qml:16
+msgctxt "Count|"
+msgid "Count"
+msgstr ""
+
+#: ../res/challenges/Count.qml:21
+msgctxt "Count|"
+msgid "I can also count using the range() function, type say(\"range(1,10)\")"
+msgstr ""
+
+#: ../res/challenges/Count.qml:24
+msgctxt "Count|"
+msgid "Type say(\"range(1,10)\") and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Count.qml:31
+msgctxt "Count|"
+msgid ""
+"I counted from 1 up to 10, try typing say(\"range(15,10)\"). What do you "
+"think will happen?"
+msgstr ""
+
+#: ../res/challenges/Count.qml:35
+msgctxt "Count|"
+msgid "Type say(\"range(15,10)\") and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Count.qml:42
+msgctxt "Count|"
+msgid ""
+"The range() function can count up but will never count over the second "
+"number."
+msgstr ""
+
+#: ../res/challenges/Hello.qml:16
+msgctxt "Hello|"
+msgid "Hello"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:21
+msgctxt "Hello|"
+msgid ""
+"Did you know you can make your computer speak?\n"
+"Try it, type say(\"hello\") and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:25
+msgctxt "Hello|"
+msgid "Oops, make sure you type all the highlighted symbols."
+msgstr ""
+
+#: ../res/challenges/Hello.qml:32
+msgctxt "Hello|"
+msgid ""
+"Cool! Let's make me say something else, type say(\"nice to meet you\") and "
+"press [enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:36
+msgctxt "Hello|"
+msgid "Type say(\"nice to meet you\") and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:43
+msgctxt "Hello|"
+msgid ""
+"Make me say a funny word like \"moo\", and type say(\"moo\")\n"
+"Try some more words!"
+msgstr ""
+
+#: ../res/ui/Views/SplashScreen.qml:36
 msgctxt "SplashScreen|"
 msgid ""
 "Loading Animation\n"

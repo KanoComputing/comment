@@ -8,8 +8,7 @@
  */
 
 
-import "../ui/Controllers/Challenge"
-import "../ui/Controllers/Step"
+import Controllers 1.0
 
 
 Challenge {
@@ -42,10 +41,10 @@ Challenge {
 
         Step {
             copy: qsTr(
-                "Make me say a funny word like \"moo\", and type say(\"moo\")\n"
+                "Make me say a funny word like \"moo\", and type say(\"moo\")\n" +
                 "Try some more words!"
             )
             validate: "say(\"*\")"
         }
-    ];
+    ]
 }

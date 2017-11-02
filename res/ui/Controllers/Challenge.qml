@@ -8,17 +8,23 @@
  */
 
 
-Component {
+import QtQuick 2.3
+
+import Controllers 1.0
+
+
+Item {
     id: root
 
-    readonly property string name
-    readonly property string index
-    readonly property int steps
+    property string name: "name property not set!"
+    property int index: 0
+    property list<Step> steps
 
-    readonly property int currentStep
-    readonly property int totalSteps
+    property int currentStep: 0
+    property bool isCompleted: false
+    property int totalSteps: steps.length
 
-    signal challengeCompleted()
+    signal completed()
 
 
     function initialise() {
@@ -26,7 +32,7 @@ Component {
     }
 
     function reset() {
-        name = 'name property not set!';
+        name = "name property not set!";
         index = 0;
         steps = [];
         currentStep = 0;

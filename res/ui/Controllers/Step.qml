@@ -8,12 +8,17 @@
  */
 
 
-Component {
+import QtQuick 2.3
+
+
+Item {
     id: root
 
-    readonly property string copy
-    readonly property string hint
-    readonly property string validate
+    property string copy: "copy property not set!"
+    property string hint: ""
+    property string validate: ""
+
+    signal completed()
 
 
     function initialise() {
@@ -21,8 +26,8 @@ Component {
     }
 
     function reset() {
-        copy = 'copy property not set!';
-        hint = ''
-        validate = ''
+        copy = "copy property not set!";
+        hint = ""
+        validate = ""
     }
 }

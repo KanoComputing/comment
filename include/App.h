@@ -13,7 +13,11 @@
 
 
 #include <QGuiApplication>
+// #include <QQmlEngine>
+// #include <QJSEngine>
 #include <QQmlApplicationEngine>
+
+#include "ChallengeManager.h"
 
 
 class App: public QGuiApplication
@@ -24,12 +28,23 @@ class App: public QGuiApplication
         App(int &argc, char **argv);
         ~App();
 
+    // public:
+    //     static QObject* challengeManagerSingletonTypeProvider(QQmlEngine *engine, QJSEngine *scriptEngine);
+
+    signals:
+        void loaded();
+
+    public:
+        Q_INVOKABLE void load();
+
     public slots:
         Q_INVOKABLE void exitApp(int rc);
 
     private:
         QQmlApplicationEngine m_engine;
+        ChallengeManager m_challengeManager;
 
+    private:
         QString getAppRelativePath(QString path);
 
     private slots:
