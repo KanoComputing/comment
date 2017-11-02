@@ -25,6 +25,12 @@ Component {
         color: Colours.Palette.backgroundColour;
         anchors.fill: parent
 
+        Component.onCompleted: {
+            cxx_app.load();
+            console.log(cxx_challengeManager.completedChallenges);
+            console.log(cxx_challengeManager.totalChallenges);
+        }
+
         KanoFonts.H2 {
             id: loadingMessage
             text: qsTr("Loading Animation\nwith Welcome Audio Track")

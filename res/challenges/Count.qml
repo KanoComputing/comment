@@ -8,8 +8,7 @@
  */
 
 
-import "../ui/Controllers/Challenge"
-import "../ui/Controllers/Step"
+import Controllers 1.0
 
 
 Challenge {
@@ -45,5 +44,5 @@ Challenge {
                 " second number."
             )
         }
-    ];
+    ]
 }
