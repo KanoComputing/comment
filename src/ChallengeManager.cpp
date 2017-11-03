@@ -8,11 +8,13 @@
  */
 
 
+#include <algorithm>
 #include <chrono>
 #include <thread>
 
 #include <QDir>
 #include <QDebug>
+#include <QFileInfo>
 #include <QObject>
 #include <QStringList>
 #include <QUrl>
@@ -39,7 +41,6 @@ ChallengeManager::~ChallengeManager() {
 
 Q_INVOKABLE void ChallengeManager::load(QQmlApplicationEngine *p_engine) {
     int completedChallenges = 0;
-    int totalChallenges = 0;
 
     #ifdef QT_DEBUG
         qDebug() << "ChallengeManager: load: Called";
@@ -51,6 +52,8 @@ Q_INVOKABLE void ChallengeManager::load(QQmlApplicationEngine *p_engine) {
         #endif
         return;
     }
+
+    m_challenges.insert(0, NULL);
 
     for (auto path : m_challengePaths) {
         QQmlComponent component(p_engine, path, QQmlComponent::PreferSynchronous);
@@ -65,21 +68,39 @@ Q_INVOKABLE void ChallengeManager::load(QQmlApplicationEngine *p_engine) {
 
         QObject *challenge = component.create();
 
-        int challengeIndex = QQmlProperty::read(challenge, "index").toInt();
-        m_challenges.insert(challengeIndex, challenge);
-        totalChallenges++;
+        QQmlProperty::write(challenge, "objectName", QFileInfo(path).baseName());
+        m_challenges.insert(QQmlProperty::read(challenge, "index").toInt(), challenge);
 
         #ifdef QT_DEBUG
             qDebug() << "ChallengeManager: load: Loaded challenge"
                      << "\n\t at path" << path
+                     << "\n\t with objectName" << QQmlProperty::read(challenge, "objectName").toString()
                      << "\n\t with name" << QQmlProperty::read(challenge, "name").toString()
-                     << "\n\t at index" << challengeIndex
+                     << "\n\t at index" << QQmlProperty::read(challenge, "index").toInt()
                      << "\n\t with" << QQmlProperty::read(challenge, "totalSteps").toInt() << "steps";
         #endif
     }
 
+    // std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+
     setCompletedChallenges(completedChallenges);
-    setTotalChallenges(totalChallenges);
+    setTotalChallenges(m_challenges.size() - 1);
+    setCurrentChallenge(1);
+}
+
+
+Q_INVOKABLE bool ChallengeManager::nextChallenge() {
+    int fromIndex = QQmlProperty::read(m_pCurrentChallenge, "index").toInt();
+
+    #ifdef QT_DEBUG
+        qDebug() << "ChallengeManager: nextChallenge: fromIndex is" << fromIndex;
+    #endif
+
+    // TODO: Find the next uncompleted challenge.
+    int toIndex = std::max(1, (fromIndex + 1) % m_challenges.size());
+
+    setCurrentChallenge(toIndex);
+    return true;
 }
 
 
@@ -93,6 +114,11 @@ Q_INVOKABLE int ChallengeManager::getCompletedChallenges() const {
 
 Q_INVOKABLE int ChallengeManager::getTotalChallenges() const {
     return m_totalChallenges;
+}
+
+
+Q_INVOKABLE QObject* ChallengeManager::getCurrentChallenge() const {
+    return m_pCurrentChallenge;
 }
 
 
@@ -122,7 +148,51 @@ bool ChallengeManager::setTotalChallenges(const int totalChallenges) {
 }
 
 
+bool ChallengeManager::setCurrentChallenge(const int challengeIndex) {
+    #ifdef QT_DEBUG
+        qDebug() << "ChallengeManager: setCurrentChallenge:" << challengeIndex;
+    #endif
+    if (challengeIndex < 0 || m_challenges.size() < challengeIndex) {
+        #ifdef QT_DEBUG
+            qDebug() << "ChallengeManager: setCurrentChallenge: ERROR index will be"
+                     << "out of bounds";
+        #endif
+        return false;
+    }
+
+    QObject* p_challenge = m_challenges[challengeIndex];
+
+    if (p_challenge == m_pCurrentChallenge || p_challenge == NULL) {
+        #ifdef QT_DEBUG
+            qDebug() << "ChallengeManager: setCurrentChallenge: ERROR next challenge"
+                     << "is either the same or NULL";
+        #endif
+        return false;
+    }
+
+    m_pCurrentChallenge = p_challenge;
+    emit currentChallengeChanged();
+    return true;
+}
+
+
+bool ChallengeManager::setCurrentChallenge(const QObject* p_challenge) {
+    #ifdef QT_DEBUG
+        qDebug() << "ChallengeManager: setCurrentChallenge:" << p_challenge;
+    #endif
+    // TODO: Implement this (if needed).
+}
+
+
 // --- Private Methods ------------------------------------------------------------------
+
+
+void onChallengeCompleted(QString challengeId, int challengeIndex) {
+    #ifdef QT_DEBUG
+        qDebug() << "ChallengeManager: onChallengeCompleted:" << challengeId << challengeIndex;
+    #endif
+    // TODO: notify the savefile here
+}
 
 
 bool ChallengeManager::findChallengePaths() {

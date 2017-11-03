@@ -7,3 +7,6 @@
 
 
 module Widgets
+
+VerticalSeparator 1.0 VerticalSeparator.qml
+IdeFooter 1.0 IdeFooter.qml

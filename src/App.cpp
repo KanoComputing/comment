@@ -38,12 +38,15 @@ App::App(int &argc, char **argv): QGuiApplication(argc, argv) {
             // Raspberry Pi local path from executable.
             getAppRelativePath("../res/ui"),
             getAppRelativePath("../../kano-qt-sdk/imports")
-
         #endif
     };
 
-    for (auto path : includePaths)
+    for (auto path : includePaths) {
         m_engine.addImportPath(path);
+        #ifdef QT_DEBUG
+            qDebug() << "App: constructor: Adding include path" << path;
+        #endif
+    }
 
     // Exposing object references to QML and loading the Main QML.
     m_engine.rootContext()->setContextProperty("cxx_app", this);

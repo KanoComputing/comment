@@ -20,15 +20,49 @@ Item {
     property int index: 0
     property list<Step> steps
 
-    property int currentStep: 0
+    property int currentStepIndex: 0
+    property Step currentStep: steps[currentStepIndex]
     property bool isCompleted: false
     property int totalSteps: steps.length
 
-    signal completed()
+    signal challengeCompleted(string challengeId, int challengeIndex)
+
+    signal requestPrintText(string text)
+    signal requestNewStepConnections()
+    signal requestOldStepDisconnect()
 
 
-    function initialise() {
+    function start() {
+        console.log("Challenge: start: Starting first step");
+        requestPrintText(name);
+        _runCurrentStep();
+    }
 
+    function run() {
+        console.log("Challenge: run: Called");
+
+        if (currentStepIndex + 1 >= steps.length) {
+            console.log("Challenge: run: Challenge completed");
+            challengeCompleted(objectName, index);
+            cxx_challengeManager.nextChallenge();
+            return;
+        }
+        requestOldStepDisconnect();
+        currentStep.stepCompleted.disconnect(run);
+        currentStepIndex++;
+        console.log("Challenge: run: currentStepIndex is " + currentStepIndex);
+    }
+
+    onCurrentStepChanged: {
+        console.log("Challenge: onCurrentStepChanged: Called");
+        _runCurrentStep();
+    }
+
+    function _runCurrentStep() {
+        console.log("Challenge: _runCurrentStep: Called");
+        requestNewStepConnections();
+        currentStep.stepCompleted.connect(run);
+        currentStep.run();
     }
 
     function reset() {

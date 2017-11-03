@@ -12,7 +12,6 @@ import Controllers 1.0
 
 
 Challenge {
-
     name: qsTr("Count")
     index: 2
 

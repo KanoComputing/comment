@@ -24,9 +24,9 @@
 int main(int argc, char *argv[]) {
 
     // This app does not allow multiple instances.
-    MultiAppInstanceGuard guard;
-    if (!guard.run())
-        return 100;
+    // MultiAppInstanceGuard guard;
+    // if (!guard.run())
+    //     return 100;
 
     // Initialise the X11 input grabbing singleton.
     X11Input::getInstance().initialise();

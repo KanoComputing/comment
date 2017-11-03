@@ -43,9 +43,13 @@ ApplicationWindow {
             id: splashScreen
         }
 
+        Views.ChallengeScreen {
+            id: challengeScreen
+        }
+
         Loader {
             id: viewLoader
-            sourceComponent: splashScreen
+            sourceComponent: challengeScreen
 
             anchors.top: parent.top
             anchors.bottom: parent.bottom

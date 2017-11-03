@@ -14,5 +14,7 @@ import QtQuick 2.0
 
 
 QtObject {
-    property color backgroundColour: '#192A36'  // R:25, G:42, B:54
+    property color backgroundColour: "#192A36"  // RGB: 25 42 54
+    property color ideFooterColour: "#909AA0"   // RGB: 144 154 160
+    property color blueTextColour: "#47B6DE"    // RGB: 71 182 222
 }
