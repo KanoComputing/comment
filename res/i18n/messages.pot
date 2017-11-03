@@ -7,77 +7,82 @@ msgstr ""
 "X-Language: en_US\n"
 "X-Qt-Contexts: true\n"
 
-#: ../res/challenges/Count.qml:16
+#: ../res/challenges/Count.qml:15
 msgctxt "Count|"
 msgid "Count"
 msgstr ""
 
-#: ../res/challenges/Count.qml:21
+#: ../res/challenges/Count.qml:20
 msgctxt "Count|"
 msgid "I can also count using the range() function, type say(\"range(1,10)\")"
 msgstr ""
 
-#: ../res/challenges/Count.qml:24
+#: ../res/challenges/Count.qml:23
 msgctxt "Count|"
 msgid "Type say(\"range(1,10)\") and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Count.qml:31
+#: ../res/challenges/Count.qml:30
 msgctxt "Count|"
 msgid ""
 "I counted from 1 up to 10, try typing say(\"range(15,10)\"). What do you "
 "think will happen?"
 msgstr ""
 
-#: ../res/challenges/Count.qml:35
+#: ../res/challenges/Count.qml:34
 msgctxt "Count|"
 msgid "Type say(\"range(15,10)\") and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Count.qml:42
+#: ../res/challenges/Count.qml:41
 msgctxt "Count|"
 msgid ""
 "The range() function can count up but will never count over the second "
 "number."
 msgstr ""
 
-#: ../res/challenges/Hello.qml:16
+#: ../res/challenges/Hello.qml:15
 msgctxt "Hello|"
 msgid "Hello"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:21
+#: ../res/challenges/Hello.qml:20
 msgctxt "Hello|"
 msgid ""
 "Did you know you can make your computer speak?\n"
 "Try it, type say(\"hello\") and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:25
+#: ../res/challenges/Hello.qml:24
 msgctxt "Hello|"
 msgid "Oops, make sure you type all the highlighted symbols."
 msgstr ""
 
-#: ../res/challenges/Hello.qml:32
+#: ../res/challenges/Hello.qml:31
 msgctxt "Hello|"
 msgid ""
 "Cool! Let's make me say something else, type say(\"nice to meet you\") and "
 "press [enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:36
+#: ../res/challenges/Hello.qml:35
 msgctxt "Hello|"
 msgid "Type say(\"nice to meet you\") and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:43
+#: ../res/challenges/Hello.qml:42
 msgctxt "Hello|"
 msgid ""
 "Make me say a funny word like \"moo\", and type say(\"moo\")\n"
 "Try some more words!"
 msgstr ""
 
-#: ../res/ui/Views/SplashScreen.qml:36
+#: ../res/ui/Widgets/IdeFooter.qml:25
+msgctxt "IdeFooter|"
+msgid "Type \"help\" for commands, \"list\" for challenges, \"exit\" to quit"
+msgstr ""
+
+#: ../res/ui/Views/SplashScreen.qml:30
 msgctxt "SplashScreen|"
 msgid ""
 "Loading Animation\n"

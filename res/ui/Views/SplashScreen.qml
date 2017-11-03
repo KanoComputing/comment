@@ -22,14 +22,8 @@ Component {
 
     Rectangle {
         id: view
-        color: Colours.Palette.backgroundColour;
+        color: Colours.Palette.backgroundColour
         anchors.fill: parent
-
-        Component.onCompleted: {
-            cxx_app.load();
-            console.log(cxx_challengeManager.completedChallenges);
-            console.log(cxx_challengeManager.totalChallenges);
-        }
 
         KanoFonts.H2 {
             id: loadingMessage
@@ -37,8 +31,15 @@ Component {
             horizontalAlignment: Text.AlignHCenter
 
             anchors.top: parent.top
+            anchors.bottom: parent.bottom
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
+        }
+
+        Component.onCompleted: {
+            cxx_app.load();
+            console.log(cxx_challengeManager.completedChallenges);
+            console.log(cxx_challengeManager.totalChallenges);
         }
     }
 }

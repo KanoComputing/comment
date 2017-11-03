@@ -24,6 +24,7 @@ class ChallengeManager: public QObject
 
     Q_PROPERTY(int completedChallenges READ getCompletedChallenges NOTIFY completedChallengesChanged)
     Q_PROPERTY(int totalChallenges READ getTotalChallenges NOTIFY totalChallengesChanged)
+    Q_PROPERTY(QObject *currentChallenge READ getCurrentChallenge NOTIFY currentChallengeChanged)
 
     public:
         ChallengeManager(QObject* parent = 0);
@@ -32,16 +33,21 @@ class ChallengeManager: public QObject
     signals:
         void completedChallengesChanged();
         void totalChallengesChanged();
+        void currentChallengeChanged();
 
     public:
         void load(QQmlApplicationEngine *p_engine);
 
         Q_INVOKABLE int getCompletedChallenges() const;
         Q_INVOKABLE int getTotalChallenges() const;
+        Q_INVOKABLE QObject* getCurrentChallenge() const;
+
+        Q_INVOKABLE bool nextChallenge();
 
     private:
-        int m_completedChallenges = 0;
-        int m_totalChallenges = 0;
+        int m_completedChallenges;
+        int m_totalChallenges;
+        QObject* m_pCurrentChallenge;
 
         QList<QObject*> m_challenges;
         QStringList m_challengePaths;
@@ -49,6 +55,10 @@ class ChallengeManager: public QObject
     private:
         bool setCompletedChallenges(const int completedChallenges);
         bool setTotalChallenges(const int totalChallenges);
+        bool setCurrentChallenge(const int challengeIndex);
+        bool setCurrentChallenge(const QObject* p_challenge);
+
+        void onChallengeCompleted(QString challengeId, int challengeIndex);
 
         bool findChallengePaths();
 };
