@@ -28,12 +28,19 @@ Item {
     signal challengeCompleted(string challengeId, int challengeIndex)
 
     signal requestPrintText(string text)
+    signal requestClear()
     signal requestNewStepConnections()
     signal requestOldStepDisconnect()
 
 
+    onCurrentStepChanged: {
+        console.log("Challenge: onCurrentStepChanged: Called");
+        _runCurrentStep();
+    }
+
     function start() {
         console.log("Challenge: start: Starting first step");
+        requestClear();
         requestPrintText(name);
         _runCurrentStep();
     }
@@ -51,11 +58,6 @@ Item {
         currentStep.stepCompleted.disconnect(run);
         currentStepIndex++;
         console.log("Challenge: run: currentStepIndex is " + currentStepIndex);
-    }
-
-    onCurrentStepChanged: {
-        console.log("Challenge: onCurrentStepChanged: Called");
-        _runCurrentStep();
     }
 
     function _runCurrentStep() {

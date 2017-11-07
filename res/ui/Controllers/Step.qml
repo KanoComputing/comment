@@ -17,15 +17,22 @@ Item {
     property string copy: "copy property not set!"
     property string hint: ""
     property string validate: ""
+    property bool clear: false
 
     signal stepCompleted()
 
     signal requestPrintText(string text)
     signal requestTypewriterText(string text)
     signal requestPrompt()
+    signal requestClear()
 
 
     function run() {
+        if (clear) {
+            console.log("Step: run: Step needs clear beforehand, requesting terminal clear");
+            requestClear();
+        }
+
         requestPrintText(copy);
 
         if (validate != "") {
@@ -38,7 +45,7 @@ Item {
     }
 
     function userInput(text) {
-        if (_isValid(text)) {
+        if (cxx_inputRunner.isValid(validate, text)) {
             console.log("Step: userInput: User input is valid, step complete");
             stepCompleted();
         } else {
@@ -47,12 +54,9 @@ Item {
                 requestPrintText(hint);
             }
             console.log("Step: userInput: User input is NOT valid, requesting user prompt");
+            // TODO: Add a small ~0.5s delay here.
             requestPrompt();
         }
-    }
-
-    function _isValid(input) {
-        return (input == validate);
     }
 
     function reset() {

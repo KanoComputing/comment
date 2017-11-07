@@ -43,7 +43,7 @@ Challenge {
                 "Make me say a funny word like \"moo\", and type say(\"moo\")\n" +
                 "Try some more words!"
             )
-            validate: "say(\"*\")"
+            validate: "say(\"moo\")"  // TODO: Support regex, this should be say("*")
         }
     ]
 }

@@ -17,10 +17,9 @@ import Widgets.Terminal 1.0
 
 Rectangle {
     id: root
+    color: "transparent"
 
     property Challenge currentChallenge: cxx_challengeManager.currentChallenge
-
-    color: "transparent"
 
     Terminal {
         id: terminal
@@ -45,31 +44,36 @@ Rectangle {
 
     onCurrentChallengeChanged: {
         console.log("InteractiveIDE: onCurrentChallengeChanged: Called");
-        currentChallenge.requestNewStepConnections.connect(connectCurrentStep);
-        currentChallenge.requestOldStepDisconnect.connect(disconnectOldStep);
-        currentChallenge.requestPrintText.connect(terminal.print_msg);
-        currentChallenge.start();
+        var challenge = currentChallenge;
+
+        challenge.requestNewStepConnections.connect(connectCurrentStep);
+        challenge.requestOldStepDisconnect.connect(disconnectOldStep);
+        challenge.requestPrintText.connect(terminal.print_msg);
+        challenge.requestClear.connect(terminal.clear);
+        challenge.start();
     }
 
     function connectCurrentStep() {
         console.log("InteractiveIDE: connectCurrentStep: Called");
-        var currentStep = cxx_challengeManager.currentChallenge.currentStep;
+        var step = cxx_challengeManager.currentChallenge.currentStep;
 
-        currentStep.requestPrintText.connect(terminal.print_msg);
-        currentStep.requestTypewriterText.connect(terminal.echo_msg);
-        currentStep.requestPrompt.connect(terminal.prompt);
-        terminal.response.connect(currentStep.userInput);
+        step.requestPrintText.connect(terminal.print_msg);
+        step.requestTypewriterText.connect(terminal.echo_msg);
+        step.requestPrompt.connect(terminal.prompt);
+        step.requestClear.connect(terminal.clear);
+        terminal.response.connect(step.userInput);
         // terminal.finished_writing.connect()
     }
 
     function disconnectOldStep() {
-        console.log("InteractiveIDE: requestOldStepDisconnect: Called");
-        var currentStep = cxx_challengeManager.currentChallenge.currentStep;
+        console.log("InteractiveIDE: disconnectOldStep: Called");
+        var step = cxx_challengeManager.currentChallenge.currentStep;
 
-        currentStep.requestPrintText.disconnect(terminal.print_msg);
-        currentStep.requestTypewriterText.disconnect(terminal.echo_msg);
-        currentStep.requestPrompt.disconnect(terminal.prompt);
-        terminal.response.disconnect(currentStep.userInput);
+        step.requestPrintText.disconnect(terminal.print_msg);
+        step.requestTypewriterText.disconnect(terminal.echo_msg);
+        step.requestPrompt.disconnect(terminal.prompt);
+        step.requestClear.disconnect(terminal.clear);
+        terminal.response.disconnect(step.userInput);
         // terminal.finished_writing.connect()
     }
 }

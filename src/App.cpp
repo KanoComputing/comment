@@ -22,6 +22,7 @@
 
 #include "App.h"
 #include "ChallengeManager.h"
+#include "InputRunner.h"
 
 
 App::App(int &argc, char **argv): QGuiApplication(argc, argv) {
@@ -51,6 +52,7 @@ App::App(int &argc, char **argv): QGuiApplication(argc, argv) {
     // Exposing object references to QML and loading the Main QML.
     m_engine.rootContext()->setContextProperty("cxx_app", this);
     m_engine.rootContext()->setContextProperty("cxx_challengeManager", &m_challengeManager);
+    m_engine.rootContext()->setContextProperty("cxx_inputRunner", &m_inputRunner);
     // qmlRegisterType<ChallengeManager>("ChallengeManager", 1, 0, "ChallengeManager");
     // qmlRegisterSingletonType<ChallengeManager>(
     //     "ChallengeManager", 1, 0, "ChallengeManager", this->challengeManagerSingletonTypeProvider

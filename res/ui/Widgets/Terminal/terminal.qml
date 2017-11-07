@@ -4,8 +4,7 @@
  * Copyright (C) 2017 Kano Computing Ltd.
  * License: http://www.gnu.org/licenses/gpl-2.0.txt GNU GPLv2
  *
- * Emulates a terminal with custom messages and prompts
- *
+ * Emulates a terminal with custom messages and prompts.
  */
 
 
@@ -16,10 +15,27 @@ import Widgets.Terminal 1.0
 
 
 Item {
-    /**
-     * Print a message to the terminal
-     */
+    id: terminal
+    implicitHeight: messages.implicitHeight
+
+    property int prompt_count: 0
+
+    // Triggered when the typewriter animation finishes when using echo_msg().
     signal finished_writing()
+
+    // Triggered when user enters prompt by calling prompt().
+    signal response(string msg);
+
+
+    Column {
+        id: messages
+        spacing: TerminalSettings.font_size
+        anchors.fill: parent
+    }
+
+    /**
+     * Print a message to the terminal with a typewriter animation.
+     */
     function echo_msg(msg) {
         var component = Qt.createComponent('terminal_text.qml'),
             obj = component.createObject(messages, {
@@ -30,6 +46,10 @@ Item {
         obj.typewriter(msg.replace(/\n/g, '<br>'));
         obj.finished_writing.connect(terminal.finished_writing);
     }
+
+    /**
+     * Print a message to the terminal
+     */
     function print_msg(msg) {
         var component = Qt.createComponent('terminal_text.qml'),
             obj = component.createObject(messages, {
@@ -41,9 +61,8 @@ Item {
         terminal.finished_writing();
     }
 
-
     /**
-     * Display a prompt and ask for a message
+     * Display a prompt and ask for a message.
      */
     function prompt(args) {
         var args = args || {},
@@ -61,22 +80,15 @@ Item {
         obj.response.connect(terminal.response);
         prompt_count++;
     }
-    property int prompt_count: 0
 
     /**
-     * Triggered when user enters prompt
+     *
      */
-    signal response(string msg);
-
-
-    id: terminal
-
-    implicitHeight: messages.implicitHeight
-
-
-    Column {
-        anchors.fill: parent
-        spacing: TerminalSettings.font_size
-        id: messages
+    function clear() {
+        for (var index = messages.children.length - 1; index >= 0; index--) {
+            if (messages.children[index].destroy) {
+                messages.children[index].destroy();
+            }
+        }
     }
 }

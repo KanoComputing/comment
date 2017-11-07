@@ -11,6 +11,8 @@ INCLUDEPATH += $$PWD/../include
 HEADERS += \
     $$PWD/../include/App.h \
     $$PWD/../include/ChallengeManager.h \
+    $$PWD/../include/InputRunner.h \
+    $$PWD/../include/PythonRunner.h \
     $$PWD/../include/Utils.h \
     # TODO: Move everything below to Kano QT Sdk repo
     $$PWD/../include/Singleton.h \

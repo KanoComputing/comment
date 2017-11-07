@@ -19,6 +19,8 @@ SOURCES += \
     $$PWD/src/Main.cpp \
     $$PWD/src/App.cpp \
     $$PWD/src/ChallengeManager.cpp \
+    $$PWD/src/InputRunner.cpp \
+    $$PWD/src/PythonRunner.cpp \
     $$PWD/src/Utils.cpp \
     # TODO: Move everything below to Kano QT Sdk repo
     $$PWD/src/MultiAppInstanceGuard.cpp \

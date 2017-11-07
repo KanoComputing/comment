@@ -18,6 +18,7 @@
 #include <QQmlApplicationEngine>
 
 #include "ChallengeManager.h"
+#include "InputRunner.h"
 
 
 class App: public QGuiApplication
@@ -43,6 +44,7 @@ class App: public QGuiApplication
     private:
         QQmlApplicationEngine m_engine;
         ChallengeManager m_challengeManager;
+        InputRunner m_inputRunner;
 
     private:
         QString getAppRelativePath(QString path);
