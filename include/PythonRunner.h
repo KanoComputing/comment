@@ -13,20 +13,33 @@
 
 
 #include <QObject>
+#include <QProcess>
 #include <QString>
 
 
 class PythonRunner: public QObject
 {
-    Q_OBJECT
-
     public:
         PythonRunner(QObject* parent = 0);
         ~PythonRunner();
 
+    signals:
+        void commandFinished(bool successful);
+
     public:
-        Q_INVOKABLE bool execute(QString command);
-        Q_INVOKABLE QString getError() const;
+        void executeCommand(QString command);
+
+        QString getOutput() const;
+        QString getError() const;
+
+    private:
+        QProcess m_commandProcess;
+        QString m_output;
+        QString m_error;
+
+    private:
+        void onCommandProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
+        void onCommandProcessStateChanged(QProcess::ProcessState newState);
 };
 
 

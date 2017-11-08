@@ -25,7 +25,7 @@ Item {
     property bool isCompleted: false
     property int totalSteps: steps.length
 
-    signal challengeCompleted(string challengeId, int challengeIndex)
+    signal completed(string challengeId, int challengeIndex)
 
     signal requestPrintText(string text)
     signal requestClear()
@@ -50,12 +50,12 @@ Item {
 
         if (currentStepIndex + 1 >= steps.length) {
             console.log("Challenge: run: Challenge completed");
-            challengeCompleted(objectName, index);
+            completed(objectName, index);
             cxx_challengeManager.nextChallenge();
             return;
         }
         requestOldStepDisconnect();
-        currentStep.stepCompleted.disconnect(run);
+        currentStep.completed.disconnect(run);
         currentStepIndex++;
         console.log("Challenge: run: currentStepIndex is " + currentStepIndex);
     }
@@ -63,7 +63,7 @@ Item {
     function _runCurrentStep() {
         console.log("Challenge: _runCurrentStep: Called");
         requestNewStepConnections();
-        currentStep.stepCompleted.connect(run);
+        currentStep.completed.connect(run);
         currentStep.run();
     }
 

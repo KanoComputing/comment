@@ -18,7 +18,7 @@
 #include "PythonRunner.h"
 
 
-class InputRunner: public PythonRunner
+class InputRunner: public QObject
 {
     Q_OBJECT
 
@@ -31,8 +31,21 @@ class InputRunner: public PythonRunner
         void requestList();
         void requestQuit();
 
+        void executeFinished(bool successful);
+
     public:
-        Q_INVOKABLE bool isValid(QString validate, QString userInput);
+        Q_INVOKABLE bool checkInstruction(QString userInput);
+        Q_INVOKABLE bool isValid(QString userInput, QString validate);
+
+        Q_INVOKABLE void execute(QString userInput);
+        Q_INVOKABLE QString getOutput() const;
+        Q_INVOKABLE QString getError() const;
+
+    private:
+        PythonRunner m_runner;
+
+    private:
+        void onCommandFinished(bool successful);
 };
 
 

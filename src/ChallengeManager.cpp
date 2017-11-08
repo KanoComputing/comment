@@ -19,6 +19,7 @@
 #include <QStringList>
 #include <QUrl>
 #include <QQmlApplicationEngine>
+#include <QQmlEngine>
 #include <QQmlComponent>
 #include <QQmlProperty>
 
@@ -67,6 +68,7 @@ Q_INVOKABLE void ChallengeManager::load(QQmlApplicationEngine *p_engine) {
         }
 
         QObject *challenge = component.create();
+        QQmlEngine::setObjectOwnership(challenge, QQmlEngine::CppOwnership);
 
         QQmlProperty::write(challenge, "objectName", QFileInfo(path).baseName());
         m_challenges.insert(QQmlProperty::read(challenge, "index").toInt(), challenge);

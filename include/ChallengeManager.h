@@ -45,9 +45,9 @@ class ChallengeManager: public QObject
         Q_INVOKABLE bool nextChallenge();
 
     private:
-        int m_completedChallenges;
-        int m_totalChallenges;
-        QObject* m_pCurrentChallenge;
+        int m_completedChallenges = 0;
+        int m_totalChallenges = 0;
+        QObject* m_pCurrentChallenge = NULL;
 
         QList<QObject*> m_challenges;
         QStringList m_challengePaths;

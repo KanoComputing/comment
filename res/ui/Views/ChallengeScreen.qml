@@ -51,8 +51,6 @@ Component {
 
         Component.onCompleted: {
             cxx_app.load();
-            console.log(cxx_challengeManager.completedChallenges);
-            console.log(cxx_challengeManager.totalChallenges);
         }
     }
 }

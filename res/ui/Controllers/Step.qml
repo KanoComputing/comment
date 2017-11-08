@@ -19,12 +19,17 @@ Item {
     property string validate: ""
     property bool clear: false
 
-    signal stepCompleted()
+    signal completed()
 
     signal requestPrintText(string text)
     signal requestTypewriterText(string text)
     signal requestPrompt()
     signal requestClear()
+
+
+    onCompleted: {
+        cxx_inputRunner.executeFinished.disconnect(onExecuteFinished);
+    }
 
 
     function run() {
@@ -40,21 +45,44 @@ Item {
             requestPrompt();
         } else {
             console.log("Step: run: Step doesn't require validation, step complete");
-            stepCompleted();
+            completed();
         }
     }
 
     function userInput(text) {
-        if (cxx_inputRunner.isValid(validate, text)) {
-            console.log("Step: userInput: User input is valid, step complete");
-            stepCompleted();
-        } else {
+        if (cxx_inputRunner.checkInstruction(text)) {
+            console.log("Step: userInput: User entered instruction, retry");
+            // TODO: Add a small ~0.5s delay here.
+            requestPrompt();
+            return;
+        }
+
+        if (!cxx_inputRunner.isValid(text, validate)) {
             if (hint != "") {
-                console.log("Step: userInput: User input is NOT valid, requesting hint print");
+                console.log("Step: userInput: User input is not valid, requesting hint print");
                 requestPrintText(hint);
             }
-            console.log("Step: userInput: User input is NOT valid, requesting user prompt");
+            console.log("Step: userInput: User input is not valid, requesting user prompt");
             // TODO: Add a small ~0.5s delay here.
+            requestPrompt();
+            return;
+        }
+
+        cxx_inputRunner.executeFinished.connect(onExecuteFinished);
+        cxx_inputRunner.execute(text);
+    }
+
+    function onExecuteFinished(successful) {
+        if (successful) {
+            console.log("Step: onExecuteFinished: Successful, step complete");
+            completed();
+        } else {
+            console.log("Step: onExecuteFinished: Script encountered error, requesting user prompt");
+            var error = cxx_inputRunner.getError();
+            if (error != "") {
+                console.log("Step: userInput: Error retrieved, requesting error print");
+                requestPrintText(error);
+            }
             requestPrompt();
         }
     }

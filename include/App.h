@@ -19,6 +19,7 @@
 
 #include "ChallengeManager.h"
 #include "InputRunner.h"
+// #include "PythonRunner.h"
 
 
 class App: public QGuiApplication
@@ -44,6 +45,8 @@ class App: public QGuiApplication
     private:
         QQmlApplicationEngine m_engine;
         ChallengeManager m_challengeManager;
+        // char foo[sizeof(PythonRunner)];
+        // PythonRunner m_pythonRunner;
         InputRunner m_inputRunner;
 
     private:

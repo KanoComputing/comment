@@ -10,7 +10,8 @@ TEMPLATE = app
 
 CONFIG += \
     kano_build_options \
-    kano_debug_target
+    debug
+    # kano_debug_target
 
 include(build/i18n.pri)
 include(build/deps.pri)
