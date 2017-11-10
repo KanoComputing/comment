@@ -20,9 +20,10 @@ QtObject {
     property color bg_color: 'black'
     property string bg_source: ''
     property color fg_color: 'white'
+    property color prompt_color: Colours.Palette.atlantis
     property var font_family: 'FreeMono'
     property var font_weight: Font.Normal
-    property string prompt_marker: '<font color="%1">></font>'.arg(Colours.Palette.blueTextColour);
+    property string prompt_marker: '<font color="%1"><b>></b></font>'.arg(Colours.Palette.pictonBlue);
     property int font_size: 24
     property int margins: 100
 }

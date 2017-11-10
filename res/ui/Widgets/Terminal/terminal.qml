@@ -16,21 +16,33 @@ import Widgets.Terminal 1.0
 
 Item {
     id: terminal
-    implicitHeight: messages.implicitHeight
+    implicitHeight: scroll.implicitHeight
 
     property int prompt_count: 0
 
-    // Triggered when the typewriter animation finishes when using echo_msg().
+    // Triggered when the typewriter animation (from echo_msg()) finishes.
     signal finished_writing()
 
-    // Triggered when user enters prompt by calling prompt().
+    // Triggered when the user hits ENTER in the prompt (from prompt()).
     signal response(string msg);
 
 
-    Column {
-        id: messages
-        spacing: TerminalSettings.font_size
+    Flickable {
+        id: scroll
+
+        contentHeight: messages.height
+        contentWidth: messages.width
+        contentY: Math.max(contentHeight - height, 0)
+
+        interactive: false
         anchors.fill: parent
+
+        Column {
+            id: messages
+            spacing: TerminalSettings.font_size
+            width: scroll.width
+            height: Math.max(scroll.height, childrenRect.height)
+        }
     }
 
     /**
@@ -82,7 +94,7 @@ Item {
     }
 
     /**
-     *
+     * Remove all objects from the terminal.
      */
     function clear() {
         for (var index = messages.children.length - 1; index >= 0; index--) {

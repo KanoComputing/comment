@@ -9,6 +9,7 @@
 
 
 import QtQuick 2.3
+import Colours 1.0 as Colours
 
 
 Item {
@@ -28,9 +29,10 @@ Item {
 
 
     onCompleted: {
-        cxx_inputRunner.executeFinished.disconnect(onExecuteFinished);
+        cxx_inputRunner.executeFinished.disconnect(_onExecuteFinished);
     }
 
+    // --- Public Slot Methods ----------------------------------------------------------
 
     function run() {
         if (clear) {
@@ -45,6 +47,7 @@ Item {
             requestPrompt();
         } else {
             console.log("Step: run: Step doesn't require validation, step complete");
+            // TODO: Insert a sleep here before signaling to progress forward.
             completed();
         }
     }
@@ -68,28 +71,26 @@ Item {
             return;
         }
 
-        cxx_inputRunner.executeFinished.connect(onExecuteFinished);
+        cxx_inputRunner.executeFinished.connect(_onExecuteFinished);
         cxx_inputRunner.execute(text);
     }
 
-    function onExecuteFinished(successful) {
+    // --- Private Slot Methods ---------------------------------------------------------
+
+    function _onExecuteFinished(successful) {
         if (successful) {
-            console.log("Step: onExecuteFinished: Successful, step complete");
+            console.log("Step: _onExecuteFinished: Successful, step complete");
             completed();
         } else {
-            console.log("Step: onExecuteFinished: Script encountered error, requesting user prompt");
+            console.log("Step: _onExecuteFinished: Script encountered error, requesting user prompt");
             var error = cxx_inputRunner.getError();
             if (error != "") {
-                console.log("Step: userInput: Error retrieved, requesting error print");
-                requestPrintText(error);
+                console.log("Step: _onExecuteFinished: Error retrieved, requesting error print");
+                requestPrintText(
+                    "<font color='%1'>".arg(Colours.Palette.tallPoppy) + error + "</font>"
+                );
             }
             requestPrompt();
         }
-    }
-
-    function reset() {
-        copy = "copy property not set!";
-        hint = ""
-        validate = ""
     }
 }

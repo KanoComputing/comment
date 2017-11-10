@@ -22,7 +22,7 @@ Component {
 
     Rectangle {
         id: view
-        color: Colours.Palette.backgroundColour
+        color: Colours.Palette.gableGreen
         anchors.fill: parent
 
         KanoFonts.H2 {

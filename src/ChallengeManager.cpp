@@ -178,14 +178,6 @@ bool ChallengeManager::setCurrentChallenge(const int challengeIndex) {
 }
 
 
-bool ChallengeManager::setCurrentChallenge(const QObject* p_challenge) {
-    #ifdef QT_DEBUG
-        qDebug() << "ChallengeManager: setCurrentChallenge:" << p_challenge;
-    #endif
-    // TODO: Implement this (if needed).
-}
-
-
 // --- Private Methods ------------------------------------------------------------------
 
 

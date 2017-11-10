@@ -17,12 +17,23 @@
 
 
 InputRunner::InputRunner(QObject* parent): QObject(parent) {
-
+    QObject::connect(
+        &m_runner, SIGNAL(commandFinished(bool)),
+        this, SLOT(onCommandFinished(bool))
+    );
 }
 
 
 InputRunner::~InputRunner() {
 
+}
+
+
+// --- Public Methods -------------------------------------------------------------------
+
+
+void InputRunner::load() {
+    m_runner.load();
 }
 
 
@@ -87,9 +98,12 @@ Q_INVOKABLE QString InputRunner::getError() const {
 }
 
 
-// --- Private Methods ------------------------------------------------------------------
+// --- Private Slot Methods -------------------------------------------------------------
 
 
 void InputRunner::onCommandFinished(bool successful) {
+    #ifdef QT_DEBUG
+        qDebug() << "InputRunner: onCommandFinished: Propagating signal";
+    #endif
     emit executeFinished(successful);
 }

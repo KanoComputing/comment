@@ -9,6 +9,7 @@
 
 
 import Controllers 1.0
+import Colours 1.0
 
 
 Challenge {
@@ -19,8 +20,10 @@ Challenge {
         Step {
             copy: qsTr(
                 "Did you know you can make your computer speak?\n" +
-                "Try it, type say(\"hello\") and press [enter]"
-            )
+                "Try it, type <font color='%1'><b>say(\"hello\")</b></font>" +
+                " and press [enter]"
+            ).arg(Palette.atlantis)
+
             hint: qsTr(
                 "Oops, make sure you type all the highlighted symbols."
             )
@@ -29,20 +32,25 @@ Challenge {
 
         Step {
             copy: qsTr(
-                "Cool! Let's make me say something else, type say(\"nice to meet you\")" +
+                "Cool! Let's make me say something else, type" +
+                " <font color='%1'><b>say(\"nice to meet you\")</b></font>" +
                 " and press [enter]"
-            )
+            ).arg(Palette.atlantis)
+
             hint: qsTr(
-                "Type say(\"nice to meet you\") and press [enter]"
+                "Type <font color='%1'><b>say(\"nice to meet you\")</b></font>" +
+                " and press [enter]"
             )
             validate: "say(\"nice to meet you\")"
         },
 
         Step {
             copy: qsTr(
-                "Make me say a funny word like \"moo\", and type say(\"moo\")\n" +
+                "Make me say a funny word like \"moo\", and type" +
+                " <font color='%1'><b>say(\"moo\")</b></font>\n" +
                 "Try some more words!"
-            )
+            ).arg(Palette.atlantis)
+
             validate: "say(\"moo\")"  // TODO: Support regex, this should be say("*")
         }
     ]

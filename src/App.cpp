@@ -75,6 +75,7 @@ Q_INVOKABLE void App::load() {
         qDebug() << "App: load: Called";
     #endif
     m_challengeManager.load(&m_engine);
+    m_inputRunner.load();
 
     emit loaded();
 }

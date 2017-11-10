@@ -11,14 +11,21 @@
 import QtQuick 2.3
 
 import Controllers 1.0
+import Colours 1.0 as Colours
 
 
 Item {
     id: root
 
-    property string name: "name property not set!"
+    property string name: qsTr("Challenge '%1'").arg(index)
     property int index: 0
     property list<Step> steps
+    property bool hasPlayground: false
+    property int playgroundPlays: 3
+    property string nextChallengeHint: qsTr(
+        "Nice coding! Shall we start the next challenge?\n" +
+        "Type <font color='%1'><b>yes</b></font> or <font color='%1'><b>no</b></font>"
+    ).arg(Colours.Palette.atlantis)
 
     property int currentStepIndex: 0
     property Step currentStep: steps[currentStepIndex]
@@ -37,6 +44,8 @@ Item {
         console.log("Challenge: onCurrentStepChanged: Called");
         _runCurrentStep();
     }
+
+    // --- Public Slot Methods ----------------------------------------------------------
 
     function start() {
         console.log("Challenge: start: Starting first step");
@@ -60,18 +69,12 @@ Item {
         console.log("Challenge: run: currentStepIndex is " + currentStepIndex);
     }
 
+    // --- Private Methods --------------------------------------------------------------
+
     function _runCurrentStep() {
         console.log("Challenge: _runCurrentStep: Called");
         requestNewStepConnections();
         currentStep.completed.connect(run);
         currentStep.run();
-    }
-
-    function reset() {
-        name = "name property not set!";
-        index = 0;
-        steps = [];
-        currentStep = 0;
-        totalSteps = 0;
     }
 }

@@ -12,6 +12,7 @@
 #define __PYTHON_RUNNER_H__
 
 
+#include <QDir>
 #include <QObject>
 #include <QProcess>
 #include <QString>
@@ -19,27 +20,37 @@
 
 class PythonRunner: public QObject
 {
+    Q_OBJECT
+
     public:
         PythonRunner(QObject* parent = 0);
         ~PythonRunner();
 
-    signals:
-        void commandFinished(bool successful);
-
     public:
+        void load();
+
         void executeCommand(QString command);
 
         QString getOutput() const;
         QString getError() const;
+
+    signals:
+        void commandFinished(bool successful);
 
     private:
         QProcess m_commandProcess;
         QString m_output;
         QString m_error;
 
-    private:
+        QString m_commandPreamble;
+        QString m_commandPostamble;
+
+    private slots:
         void onCommandProcessFinished(int exitCode, QProcess::ExitStatus exitStatus);
-        void onCommandProcessStateChanged(QProcess::ProcessState newState);
+
+    private:
+        QDir* findScriptsDir();
+        QString readCommandScript(QString path);
 };
 
 

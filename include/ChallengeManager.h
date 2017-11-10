@@ -30,11 +30,6 @@ class ChallengeManager: public QObject
         ChallengeManager(QObject* parent = 0);
         ~ChallengeManager();
 
-    signals:
-        void completedChallengesChanged();
-        void totalChallengesChanged();
-        void currentChallengeChanged();
-
     public:
         void load(QQmlApplicationEngine *p_engine);
 
@@ -43,6 +38,11 @@ class ChallengeManager: public QObject
         Q_INVOKABLE QObject* getCurrentChallenge() const;
 
         Q_INVOKABLE bool nextChallenge();
+
+    signals:
+        void completedChallengesChanged();
+        void totalChallengesChanged();
+        void currentChallengeChanged();
 
     private:
         int m_completedChallenges = 0;
@@ -56,7 +56,6 @@ class ChallengeManager: public QObject
         bool setCompletedChallenges(const int completedChallenges);
         bool setTotalChallenges(const int totalChallenges);
         bool setCurrentChallenge(const int challengeIndex);
-        bool setCurrentChallenge(const QObject* p_challenge);
 
         void onChallengeCompleted(QString challengeId, int challengeIndex);
 

@@ -18,9 +18,9 @@ def say(text):
     cmd = ''
 
     if platform.system() == 'Darwin':
-        cmd = 'say {}'.format(text)
+        cmd = 'say "{}"'.format(text)
     elif platform.system() == 'Linux':
-        cmd = 'espeak {}'.format(text)
+        cmd = 'espeak "{}"'.format(text)
 
     if not cmd:
         return

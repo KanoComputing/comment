@@ -66,7 +66,7 @@ RowLayout {
         font.family: TerminalSettings.font_family
         font.pixelSize: TerminalSettings.font_size
         font.weight: TerminalSettings.font_weight
-        color: TerminalSettings.fg_color
+        color: TerminalSettings.prompt_color
         height: font.pixelSize
         Layout.fillWidth: true
         focus: true

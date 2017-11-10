@@ -26,12 +26,8 @@ class InputRunner: public QObject
         InputRunner(QObject* parent = 0);
         ~InputRunner();
 
-    signals:
-        void requestHelp();
-        void requestList();
-        void requestQuit();
-
-        void executeFinished(bool successful);
+    public:
+        void load();
 
     public:
         Q_INVOKABLE bool checkInstruction(QString userInput);
@@ -41,10 +37,17 @@ class InputRunner: public QObject
         Q_INVOKABLE QString getOutput() const;
         Q_INVOKABLE QString getError() const;
 
+    signals:
+        void requestHelp();
+        void requestList();
+        void requestQuit();
+
+        void executeFinished(bool successful);
+
     private:
         PythonRunner m_runner;
 
-    private:
+    private slots:
         void onCommandFinished(bool successful);
 };
 

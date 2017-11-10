@@ -17,15 +17,24 @@ import Colours 1.0 as Colours
 
 Rectangle {
     id: root
-    color: Colours.Palette.ideFooterColour
+    color: Colours.Palette.regentGray
 
     KanoFonts.H4 {
         id: loadingMessage
-        color: Colours.Palette.backgroundColour
-        text: qsTr("Type \"help\" for commands, \"list\" for challenges, \"exit\" to quit")
+        color: Colours.Palette.gableGreen
         verticalAlignment: Text.AlignVCenter
+
+        text: qsTr(
+            "Type \"<font color='%1'>help</font>\" for commands, " +
+                 "\"<font color='%1'>list</font>\" for challenges, " +
+                 "\"<font color='%1'>exit</font>\" to quit"
+        ).arg(Colours.Palette.atlantis)
 
         anchors.fill: parent
         anchors.leftMargin: 10
+
+        Component.onCompleted: {
+            console.log(text);
+        }
     }
 }
