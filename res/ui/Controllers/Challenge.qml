@@ -31,6 +31,7 @@ Item {
     property Step currentStep: steps[currentStepIndex]
     property bool isCompleted: false
     property int totalSteps: steps.length
+    property Playground playground: playground
 
     signal completed(string challengeId, int challengeIndex)
 
@@ -38,11 +39,26 @@ Item {
     signal requestClear()
     signal requestNewStepConnections()
     signal requestOldStepDisconnect()
+    signal requestPlaygroundConnections()
+    signal requestPlaygroundDisconnect()
+
+
+    Playground {
+        id: playground
+    }
 
 
     onCurrentStepChanged: {
         console.log("Challenge: onCurrentStepChanged: Called");
         _runCurrentStep();
+    }
+
+    function onPlaygroundInputCountChanged() {
+        if (playground.inputCount == playgroundPlays) {
+            playground.onInputCountChanged.disconnect(onPlaygroundInputCountChanged);
+            requestPlaygroundDisconnect();
+            _completeChallenge();
+        }
     }
 
     // --- Public Slot Methods ----------------------------------------------------------
@@ -57,14 +73,21 @@ Item {
     function run() {
         console.log("Challenge: run: Called");
 
-        if (currentStepIndex + 1 >= steps.length) {
-            console.log("Challenge: run: Challenge completed");
-            completed(objectName, index);
-            cxx_challengeManager.nextChallenge();
-            return;
-        }
         requestOldStepDisconnect();
         currentStep.completed.disconnect(run);
+
+        if (currentStepIndex + 1 >= steps.length) {
+            if (hasPlayground) {
+                requestPlaygroundConnections();
+                playground.onInputCountChanged.connect(onPlaygroundInputCountChanged);
+                playground.run();
+                return;
+            } else {
+                _completeChallenge();
+                return;
+            }
+        }
+
         currentStepIndex++;
         console.log("Challenge: run: currentStepIndex is " + currentStepIndex);
     }
@@ -76,5 +99,11 @@ Item {
         requestNewStepConnections();
         currentStep.completed.connect(run);
         currentStep.run();
+    }
+
+    function _completeChallenge() {
+        console.log("Challenge: _completeChallenge: Challenge completed");
+        completed(objectName, index);
+        cxx_challengeManager.nextChallenge();
     }
 }

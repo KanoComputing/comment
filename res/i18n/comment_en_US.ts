@@ -56,28 +56,28 @@ Type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;yes&lt;/b&gt;&lt;/font&gt; or &lt
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../res/challenges/Hello.qml" line="21"/>
+        <location filename="../res/challenges/Hello.qml" line="24"/>
         <source>Did you know you can make your computer speak?
 Try it, type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;say(&quot;hello&quot;)&lt;/b&gt;&lt;/font&gt; and press [enter]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../res/challenges/Hello.qml" line="27"/>
+        <location filename="../res/challenges/Hello.qml" line="30"/>
         <source>Oops, make sure you type all the highlighted symbols.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../res/challenges/Hello.qml" line="34"/>
+        <location filename="../res/challenges/Hello.qml" line="37"/>
         <source>Cool! Let&apos;s make me say something else, type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;say(&quot;nice to meet you&quot;)&lt;/b&gt;&lt;/font&gt; and press [enter]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../res/challenges/Hello.qml" line="40"/>
+        <location filename="../res/challenges/Hello.qml" line="43"/>
         <source>Type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;say(&quot;nice to meet you&quot;)&lt;/b&gt;&lt;/font&gt; and press [enter]</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../res/challenges/Hello.qml" line="48"/>
+        <location filename="../res/challenges/Hello.qml" line="51"/>
         <source>Make me say a funny word like &quot;moo&quot;, and type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;say(&quot;moo&quot;)&lt;/b&gt;&lt;/font&gt;
 Try some more words!</source>
         <translation type="unfinished"></translation>

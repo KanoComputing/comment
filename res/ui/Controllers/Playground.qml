@@ -17,16 +17,20 @@ Item {
 
     property int inputCount: 0
 
+    signal requestPrintText(string text)
     signal requestPrompt()
 
 
     // --- Public Methods ---------------------------------------------------------------
 
     function run() {
+        console.log("Playground: run: Entering playground mode");
         cxx_inputRunner.executeFinished.connect(_onExecuteFinished);
+        requestPrompt();
     }
 
     function stop() {
+        console.log("Playground: run: Exiting playground");
         cxx_inputRunner.executeFinished.disconnect(_onExecuteFinished);
     }
 
@@ -34,7 +38,7 @@ Item {
 
     function userInput(text) {
         if (cxx_inputRunner.checkInstruction(text)) {
-            console.log("Step: userInput: User entered instruction, retry");
+            console.log("Playground: userInput: User entered instruction, retry");
             // TODO: Add a small ~0.5s delay here.
             requestPrompt();
             return;
@@ -46,10 +50,7 @@ Item {
     // --- Private Slot Methods ---------------------------------------------------------
 
     function _onExecuteFinished(successful) {
-        if (successful) {
-            console.log("Playground: _onExecuteFinished: Successful, step complete");
-            completed();
-        } else {
+        if (!successful) {
             console.log(
                 "Playground: _onExecuteFinished: Script encountered error, requesting" +
                 " user prompt"
@@ -64,7 +65,8 @@ Item {
                     "<font color='%1'>".arg(Colours.Palette.tallPoppy) + error + "</font>"
                 );
             }
-            requestPrompt();
         }
+        inputCount++;
+        requestPrompt();
     }
 }

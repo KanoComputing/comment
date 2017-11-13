@@ -46,15 +46,21 @@ Rectangle {
         console.log("InteractiveIDE: onCurrentChallengeChanged: Called");
         var challenge = currentChallenge;
 
-        challenge.requestNewStepConnections.connect(connectCurrentStep);
-        challenge.requestOldStepDisconnect.connect(disconnectOldStep);
+        challenge.requestNewStepConnections.connect(_connectCurrentStep);
+        challenge.requestOldStepDisconnect.connect(_disconnectOldStep);
+        challenge.requestPlaygroundConnections.connect(_connectPlayground);
+        challenge.requestPlaygroundDisconnect.connect(_disconnectPlayground);
+
         challenge.requestPrintText.connect(terminal.print_msg);
         challenge.requestClear.connect(terminal.clear);
+
         challenge.start();
     }
 
-    function connectCurrentStep() {
-        console.log("InteractiveIDE: connectCurrentStep: Called");
+    // --- Private Methods --------------------------------------------------------------
+
+    function _connectCurrentStep() {
+        console.log("InteractiveIDE: _connectCurrentStep: Called");
         var step = cxx_challengeManager.currentChallenge.currentStep;
 
         step.requestPrintText.connect(terminal.print_msg);
@@ -65,8 +71,8 @@ Rectangle {
         // terminal.finished_writing.connect()
     }
 
-    function disconnectOldStep() {
-        console.log("InteractiveIDE: disconnectOldStep: Called");
+    function _disconnectOldStep() {
+        console.log("InteractiveIDE: _disconnectOldStep: Called");
         var step = cxx_challengeManager.currentChallenge.currentStep;
 
         step.requestPrintText.disconnect(terminal.print_msg);
@@ -75,5 +81,23 @@ Rectangle {
         step.requestClear.disconnect(terminal.clear);
         terminal.response.disconnect(step.userInput);
         // terminal.finished_writing.connect()
+    }
+
+    function _connectPlayground() {
+        console.log("InteractiveIDE: _connectPlayground: Called");
+        var playground = cxx_challengeManager.currentChallenge.playground;
+
+        playground.requestPrintText.connect(terminal.print_msg);
+        playground.requestPrompt.connect(terminal.prompt);
+        terminal.response.connect(playground.userInput);
+    }
+
+    function _disconnectPlayground() {
+        console.log("InteractiveIDE: _disconnectPlayground: Called");
+        var playground = cxx_challengeManager.currentChallenge.playground;
+
+        playground.requestPrintText.disconnect(terminal.print_msg);
+        playground.requestPrompt.disconnect(terminal.prompt);
+        terminal.response.disconnect(playground.userInput);
     }
 }

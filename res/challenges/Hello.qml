@@ -16,6 +16,9 @@ Challenge {
     name: qsTr("Hello")
     index: 1
 
+    hasPlayground: false
+    playgroundPlays: 3
+
     steps: [
         Step {
             copy: qsTr(

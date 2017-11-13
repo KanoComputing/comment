@@ -60,7 +60,7 @@ msgctxt "Hello|"
 msgid "Hello"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:21
+#: ../res/challenges/Hello.qml:24
 #, qt-format
 msgctxt "Hello|"
 msgid ""
@@ -68,12 +68,12 @@ msgid ""
 "Try it, type <font color='%1'><b>say(\"hello\")</b></font> and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:27
+#: ../res/challenges/Hello.qml:30
 msgctxt "Hello|"
 msgid "Oops, make sure you type all the highlighted symbols."
 msgstr ""
 
-#: ../res/challenges/Hello.qml:34
+#: ../res/challenges/Hello.qml:37
 #, qt-format
 msgctxt "Hello|"
 msgid ""
@@ -81,7 +81,7 @@ msgid ""
 "to meet you\")</b></font> and press [enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:40
+#: ../res/challenges/Hello.qml:43
 #, qt-format
 msgctxt "Hello|"
 msgid ""
@@ -89,7 +89,7 @@ msgid ""
 "[enter]"
 msgstr ""
 
-#: ../res/challenges/Hello.qml:48
+#: ../res/challenges/Hello.qml:51
 #, qt-format
 msgctxt "Hello|"
 msgid ""
