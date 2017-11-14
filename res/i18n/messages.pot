@@ -1,0 +1,148 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Qt-Contexts: true\n"
+
+#: ../res/ui/Controllers/Challenge.qml:20
+#, qt-format
+msgctxt "Challenge|"
+msgid "Challenge '%1'"
+msgstr ""
+
+#: ../res/ui/Controllers/Challenge.qml:25
+#, qt-format
+msgctxt "Challenge|"
+msgid ""
+"Nice coding! Shall we start the next challenge?\n"
+"Type <font color='%1'><b>yes</b></font> or <font color='%1'><b>no</b></font>"
+msgstr ""
+
+#: ../res/ui/Views/ChallengeSelectionScreen.qml:41
+msgctxt "ChallengeSelectionScreen|"
+msgid "Challenges"
+msgstr ""
+
+#: ../res/ui/Views/ChallengeSelectionScreen.qml:61
+#, qt-format
+msgctxt "ChallengeSelectionScreen|"
+msgid "<b>Type a <font color='%1'>Number</font> to Pick a Challenge</b>"
+msgstr ""
+
+#: ../res/challenges/Count.qml:16
+msgctxt "Count|"
+msgid "Count"
+msgstr ""
+
+#: ../res/challenges/Count.qml:21
+msgctxt "Count|"
+msgid "I can also count using the range() function, type say(range(1,10))"
+msgstr ""
+
+#: ../res/challenges/Count.qml:24
+msgctxt "Count|"
+msgid "Type say(range(1,10)) and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Count.qml:31
+msgctxt "Count|"
+msgid ""
+"I counted from 1 up to 10, try typing say(range(15,10)). What do you think "
+"will happen?"
+msgstr ""
+
+#: ../res/challenges/Count.qml:35
+msgctxt "Count|"
+msgid "Type say(range(15,10)) and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Count.qml:42
+msgctxt "Count|"
+msgid ""
+"The range() function can count up but will never count over the second "
+"number."
+msgstr ""
+
+#: ../res/challenges/Hello.qml:16
+msgctxt "Hello|"
+msgid "Hello"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:24
+#, qt-format
+msgctxt "Hello|"
+msgid ""
+"Did you know you can make your computer speak?\n"
+"Try it, type <font color='%1'><b>say(\"hello\")</b></font> and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:30
+msgctxt "Hello|"
+msgid "Oops, make sure you type all the highlighted symbols."
+msgstr ""
+
+#: ../res/challenges/Hello.qml:37
+#, qt-format
+msgctxt "Hello|"
+msgid ""
+"Cool! Let's make me say something else, type <font color='%1'><b>say(\"nice "
+"to meet you\")</b></font> and press [enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:43
+#, qt-format
+msgctxt "Hello|"
+msgid ""
+"Type <font color='%1'><b>say(\"nice to meet you\")</b></font> and press "
+"[enter]"
+msgstr ""
+
+#: ../res/challenges/Hello.qml:51
+#, qt-format
+msgctxt "Hello|"
+msgid ""
+"Make me say a funny word like \"moo\", and type <font "
+"color='%1'><b>say(\"moo\")</b></font>\n"
+"Try some more words!"
+msgstr ""
+
+#: ../res/ui/Views/HelpScreen.qml:41
+msgctxt "HelpScreen|"
+msgid "Help"
+msgstr ""
+
+#: ../res/ui/Views/HelpScreen.qml:61
+#, qt-format
+msgctxt "HelpScreen|"
+msgid ""
+"<b>Coding is fun! I am here to help.\n"
+"Type a <font color='%1'>Number</font> to learn more about a coding topic.</b>"
+msgstr ""
+
+#: ../res/ui/Widgets/IdeFooter.qml:27
+#, qt-format
+msgctxt "IdeFooter|"
+msgid ""
+"Type \"<font color='%1'>help</font>\" for commands, \"<font "
+"color='%1'>list</font>\" for challenges, \"<font color='%1'>exit</font>\" to "
+"quit"
+msgstr ""
+
+#: ../res/ui/Views/SplashScreen.qml:31
+msgctxt "SplashScreen|"
+msgid "<i>Loading Animation with Welcome Audio Track</i>"
+msgstr ""
+
+#: ../res/ui/Views/StartScreen.qml:39
+msgctxt "StartScreen|"
+msgid "Make Me Talk"
+msgstr ""
+
+#: ../res/ui/Views/StartScreen.qml:58
+#, qt-format
+msgctxt "StartScreen|"
+msgid "<font color='%1'><b>Press [ENTER] to Start</b></font>"
+msgstr ""

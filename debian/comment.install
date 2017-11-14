@@ -1,0 +1,8 @@
+bin/comment usr/bin/
+
+res/challenges usr/share/comment/
+res/i18n usr/share/comment/
+res/icon/comment.app usr/share/applications/
+res/icon/comment-app.png usr/share/icons/Kano/66x66/apps/
+res/scripts usr/share/comment/
+res/ui usr/share/comment/
