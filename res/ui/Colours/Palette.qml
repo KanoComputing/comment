@@ -21,4 +21,5 @@ QtObject {
     property color pictonBlue: "#47B6DE"  // RGB: 71, 182, 222
     property color atlantis:   "#93CF48"  // RGB: 147, 207, 72
     property color tallPoppy:  "#C02828"  // RGB: 192, 40, 40
+    property color swampGreen: "#B8C397"  // RGB: 184, 195, 151
 }

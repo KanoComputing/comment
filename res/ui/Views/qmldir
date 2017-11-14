@@ -9,7 +9,10 @@
 module Views
 
 SplashScreen 1.0 SplashScreen.qml
+StartScreen 1.0 StartScreen.qml
+ChallengeSelectionScreen 1.0 ChallengeSelectionScreen.qml
 ChallengeScreen 1.0 ChallengeScreen.qml
+HelpScreen 1.0 HelpScreen.qml
 
 InteractiveIDE 1.0 InteractiveIDE.qml
 Avatar 1.0 Avatar.qml

@@ -21,6 +21,17 @@ msgid ""
 "Type <font color='%1'><b>yes</b></font> or <font color='%1'><b>no</b></font>"
 msgstr ""
 
+#: ../res/ui/Views/ChallengeSelectionScreen.qml:41
+msgctxt "ChallengeSelectionScreen|"
+msgid "Challenges"
+msgstr ""
+
+#: ../res/ui/Views/ChallengeSelectionScreen.qml:61
+#, qt-format
+msgctxt "ChallengeSelectionScreen|"
+msgid "<b>Type a <font color='%1'>Number</font> to Pick a Challenge</b>"
+msgstr ""
+
 #: ../res/challenges/Count.qml:16
 msgctxt "Count|"
 msgid "Count"
@@ -98,6 +109,19 @@ msgid ""
 "Try some more words!"
 msgstr ""
 
+#: ../res/ui/Views/HelpScreen.qml:41
+msgctxt "HelpScreen|"
+msgid "Help"
+msgstr ""
+
+#: ../res/ui/Views/HelpScreen.qml:61
+#, qt-format
+msgctxt "HelpScreen|"
+msgid ""
+"<b>Coding is fun! I am here to help.\n"
+"Type a <font color='%1'>Number</font> to learn more about a coding topic.</b>"
+msgstr ""
+
 #: ../res/ui/Widgets/IdeFooter.qml:27
 #, qt-format
 msgctxt "IdeFooter|"
@@ -107,9 +131,18 @@ msgid ""
 "quit"
 msgstr ""
 
-#: ../res/ui/Views/SplashScreen.qml:30
+#: ../res/ui/Views/SplashScreen.qml:31
 msgctxt "SplashScreen|"
-msgid ""
-"Loading Animation\n"
-"with Welcome Audio Track"
+msgid "<i>Loading Animation with Welcome Audio Track</i>"
+msgstr ""
+
+#: ../res/ui/Views/StartScreen.qml:39
+msgctxt "StartScreen|"
+msgid "Make Me Talk"
+msgstr ""
+
+#: ../res/ui/Views/StartScreen.qml:58
+#, qt-format
+msgctxt "StartScreen|"
+msgid "<font color='%1'><b>Press [ENTER] to Start</b></font>"
 msgstr ""

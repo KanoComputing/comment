@@ -9,8 +9,6 @@
 
 
 import QtQuick 2.3
-import QtQuick.Controls 1.4
-import QtQuick.Window 2.2
 
 import Kano.Fonts 1.0 as KanoFonts
 
@@ -22,24 +20,37 @@ Component {
 
     Rectangle {
         id: view
+
+        signal changeScreen(string screenType)
+
         color: Colours.Palette.gableGreen
         anchors.fill: parent
 
-        KanoFonts.H2 {
+        KanoFonts.H1 {
             id: loadingMessage
-            text: qsTr("Loading Animation\nwith Welcome Audio Track")
-            horizontalAlignment: Text.AlignHCenter
+            text: qsTr("<i>Loading Animation with Welcome Audio Track</i>")
+            color: "white"
 
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.verticalCenter: parent.verticalCenter
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+
+            anchors.fill: parent
         }
 
         Component.onCompleted: {
+            // _load();
+        }
+
+        // --- Private Methods ----------------------------------------------------------
+
+        function _load() {
             cxx_app.load();
-            console.log(cxx_challengeManager.completedChallenges);
-            console.log(cxx_challengeManager.totalChallenges);
+            _onLoaded();
+        }
+
+        function _onLoaded() {
+            console.log("SplashScreen: _onLoaded: Called");
+            view.changeScreen("ChallengeScreen");
         }
     }
 }

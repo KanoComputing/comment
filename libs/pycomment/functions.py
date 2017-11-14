@@ -17,10 +17,10 @@ def say(text):
 
     cmd = ''
 
-    if platform.system() == 'Darwin':
-        cmd = 'say "{}"'.format(text)
-    elif platform.system() == 'Linux':
+    if platform.system() == 'Linux':
         cmd = 'espeak "{}"'.format(text)
+    elif platform.system() == 'Darwin':
+        cmd = 'say "{}"'.format(text)
 
     if not cmd:
         return

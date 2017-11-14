@@ -16,7 +16,7 @@ Challenge {
     name: qsTr("Hello")
     index: 1
 
-    hasPlayground: false
+    hasPlayground: true
     playgroundPlays: 3
 
     steps: [

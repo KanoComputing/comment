@@ -12,7 +12,6 @@ import QtQuick 2.3
 
 import Views 1.0 as Views
 import Widgets 1.0 as Widgets
-
 import Colours 1.0 as Colours
 
 
@@ -21,6 +20,9 @@ Component {
 
     Rectangle {
         id: view
+
+        signal changeScreen(string screenType)
+
         color: Colours.Palette.gableGreen
         anchors.fill: parent
 

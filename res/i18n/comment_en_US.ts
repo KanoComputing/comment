@@ -16,6 +16,19 @@ Type &lt;font color=&apos;%1&apos;&gt;&lt;b&gt;yes&lt;/b&gt;&lt;/font&gt; or &lt
     </message>
 </context>
 <context>
+    <name>ChallengeSelectionScreen</name>
+    <message>
+        <location filename="../res/ui/Views/ChallengeSelectionScreen.qml" line="41"/>
+        <source>Challenges</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../res/ui/Views/ChallengeSelectionScreen.qml" line="61"/>
+        <source>&lt;b&gt;Type a &lt;font color=&apos;%1&apos;&gt;Number&lt;/font&gt; to Pick a Challenge&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Count</name>
     <message>
         <location filename="../res/challenges/Count.qml" line="16"/>
@@ -84,6 +97,20 @@ Try some more words!</source>
     </message>
 </context>
 <context>
+    <name>HelpScreen</name>
+    <message>
+        <location filename="../res/ui/Views/HelpScreen.qml" line="41"/>
+        <source>Help</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../res/ui/Views/HelpScreen.qml" line="61"/>
+        <source>&lt;b&gt;Coding is fun! I am here to help.
+Type a &lt;font color=&apos;%1&apos;&gt;Number&lt;/font&gt; to learn more about a coding topic.&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>IdeFooter</name>
     <message>
         <location filename="../res/ui/Widgets/IdeFooter.qml" line="27"/>
@@ -94,9 +121,21 @@ Try some more words!</source>
 <context>
     <name>SplashScreen</name>
     <message>
-        <location filename="../res/ui/Views/SplashScreen.qml" line="30"/>
-        <source>Loading Animation
-with Welcome Audio Track</source>
+        <location filename="../res/ui/Views/SplashScreen.qml" line="31"/>
+        <source>&lt;i&gt;Loading Animation with Welcome Audio Track&lt;/i&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>StartScreen</name>
+    <message>
+        <location filename="../res/ui/Views/StartScreen.qml" line="39"/>
+        <source>Make Me Talk</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../res/ui/Views/StartScreen.qml" line="58"/>
+        <source>&lt;font color=&apos;%1&apos;&gt;&lt;b&gt;Press [ENTER] to Start&lt;/b&gt;&lt;/font&gt;</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

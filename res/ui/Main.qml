@@ -43,8 +43,20 @@ ApplicationWindow {
             id: splashScreen
         }
 
+        Views.StartScreen {
+            id: startScreen
+        }
+
         Views.ChallengeScreen {
             id: challengeScreen
+        }
+
+        Views.ChallengeSelectionScreen {
+            id: challengeSelectionScreen
+        }
+
+        Views.HelpScreen {
+            id: helpScreen
         }
 
         Loader {
